@@ -1,0 +1,271 @@
+/* ============================================================
+   Quiz dos Jubs — Estilos
+   ============================================================ */
+
+/* ── Reset & Base ── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { background: #1a0a0e; min-height: 100vh; }
+
+.quiz-wrap {
+  min-height: 100vh;
+  background: #1a0a0e;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Animações globais ── */
+@keyframes fadeIn  { to { opacity: 1; } }
+@keyframes pulse   { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+@keyframes fall    { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0.5; } 100% { transform: translateY(100vh) rotate(360deg); opacity: 0; } }
+@keyframes circleIn { to { opacity: 1; transform: scale(1) translateY(0); } }
+@keyframes wordIn   { to { opacity: 1; transform: translateY(0); } }
+@keyframes floatGift { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes shake {
+  0%,  100% { transform: rotate(0deg)   translateY(0); }
+  10%        { transform: rotate(-10deg) translateY(-4px); }
+  25%        { transform: rotate(10deg)  translateY(-8px); }
+  40%        { transform: rotate(-8deg)  translateY(-4px); }
+  55%        { transform: rotate(8deg)   translateY(-6px); }
+  70%        { transform: rotate(-5deg)  translateY(-2px); }
+  85%        { transform: rotate(5deg)   translateY(-4px); }
+}
+
+/* ── Pétalas de fundo ── */
+.bg-petals {
+  position: fixed;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 480px; bottom: 0;
+  pointer-events: none; z-index: 0; overflow: hidden;
+}
+.petal {
+  position: absolute; width: 6px; height: 10px;
+  border-radius: 50% 0 50% 0; opacity: 0;
+  animation: fall linear infinite;
+}
+
+/* ============================================================
+   QUIZ — Tela principal
+   ============================================================ */
+.quiz-main { width: 100%; }
+
+/* Cabeçalho */
+.header { width: 100%; padding: 2.5rem 1.5rem 1.5rem; text-align: center; position: relative; z-index: 2; }
+.header-deco { font-size: 18px; color: #c0445a; letter-spacing: 6px; margin-bottom: 8px; font-weight: 300; }
+.quiz-title { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; color: #f5c2cc; line-height: 1.1; text-shadow: 0 0 40px rgba(192,68,90,0.4); letter-spacing: -1px; }
+.quiz-title span { color: #e05070; font-style: italic; }
+.header-line { width: 60px; height: 2px; background: linear-gradient(90deg, transparent, #c0445a, transparent); margin: 14px auto 0; }
+
+/* Barra de progresso */
+.progress-area { width: 100%; padding: 0 1.5rem; position: relative; z-index: 2; margin-bottom: 4px; }
+.progress-label { display: flex; justify-content: space-between; font-size: 12px; color: #9a4a5a; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
+.progress-bar { width: 100%; height: 3px; background: #2e1018; border-radius: 2px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, #7a1530, #c0445a, #e8889a); border-radius: 2px; transition: width 0.5s cubic-bezier(0.4,0,0.2,1); }
+
+/* Card da pergunta */
+.question-card { width: calc(100% - 3rem); background: #2a0d14; border: 1px solid #4a1828; border-radius: 20px; padding: 1.6rem; margin: 1rem auto; position: relative; z-index: 2; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+.q-number { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #c0445a; text-transform: uppercase; margin-bottom: 10px; }
+.q-text { font-size: 1.1rem; color: #f0d8de; line-height: 1.55; font-weight: 300; }
+.q-text strong { color: #f5c2cc; font-weight: 700; }
+.q-img { width: 100%; border-radius: 12px; margin-top: 14px; object-fit: cover; max-height: 220px; border: 1px solid #4a1828; }
+
+/* Alternativas */
+.answers-area { width: calc(100% - 3rem); margin: 0 auto; padding: 0 0 1rem; position: relative; z-index: 2; display: flex; flex-direction: column; gap: 10px; }
+
+.answer-btn { width: 100%; background: #2a0d14; border: 1px solid #4a1828; border-radius: 14px; padding: 14px 18px; cursor: pointer; display: flex; align-items: center; gap: 14px; transition: all 0.2s ease; text-align: left; position: relative; overflow: hidden; }
+.answer-btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, #5a0f20, #3a0a15); opacity: 0; transition: opacity 0.2s; }
+.answer-btn:hover::before,
+.answer-btn:active::before { opacity: 1; }
+.answer-btn:active { transform: scale(0.98); }
+.answer-btn.selected { border-color: #c0445a; background: #3d0f1c; }
+.answer-btn.selected::before { opacity: 1; }
+
+.answer-letter { width: 34px; height: 34px; border-radius: 50%; background: #3a0f1c; border: 1.5px solid #6a2035; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: #e0889a; flex-shrink: 0; position: relative; z-index: 1; transition: all 0.2s; }
+.answer-btn.selected .answer-letter { background: #c0445a; border-color: #c0445a; color: #fff; }
+.answer-text { font-size: 0.95rem; color: #d0a0b0; line-height: 1.4; position: relative; z-index: 1; font-weight: 300; }
+.answer-btn.selected .answer-text { color: #f5c2cc; }
+
+/* Navegação */
+.nav-area { width: calc(100% - 3rem); margin: 0 auto 2.5rem; position: relative; z-index: 2; display: flex; gap: 10px; }
+.nav-btn { flex: 1; padding: 15px; border-radius: 14px; border: none; cursor: pointer; font-family: 'Lato', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; transition: all 0.2s; }
+.nav-btn.back { background: #2a0d14; border: 1px solid #4a1828; color: #9a4a5a; }
+.nav-btn.next { background: linear-gradient(135deg, #8a1530, #c0445a); color: #fff; box-shadow: 0 4px 16px rgba(192,68,90,0.3); }
+.nav-btn.next:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
+.nav-btn:not(:disabled):active { transform: scale(0.97); }
+
+/* ============================================================
+   TELA FINAL — NAMORA COMIGO
+   ============================================================ */
+.final-screen { display: none; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 3rem 1.5rem; position: relative; z-index: 2; text-align: center; }
+.final-screen.active { display: flex; }
+
+.final-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #7a2a3a; margin-bottom: 2rem; opacity: 0; animation: fadeIn 0.6s 0.2s forwards; }
+
+.circles-row { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 10px; }
+
+.circle-letter { width: 44px; height: 44px; border-radius: 50%; border: 2px solid #c0445a; background: #2a0d14; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: #f5c2cc; opacity: 0; transform: scale(0.5) translateY(20px); animation: circleIn 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+.circle-letter.correct { border-color: #4caf82; box-shadow: 0 0 10px rgba(76,175,130,0.4); color: #a8f0cc; }
+.circle-letter.wrong   { border-color: #c0444a; box-shadow: 0 0 10px rgba(192,68,74,0.4);  color: #f5c2c4; }
+
+.final-word { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 700; color: #e05070; letter-spacing: 2px; opacity: 0; transform: translateY(10px); animation: wordIn 0.5s forwards; line-height: 1; margin-bottom: 1.8rem; text-shadow: 0 0 30px rgba(224,80,112,0.35); }
+
+.final-question { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: #f5c2cc; opacity: 0; animation: fadeIn 0.8s forwards; cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent; transition: transform 0.15s; }
+.final-question:active { transform: scale(0.9); }
+
+/* ============================================================
+   TELA DE DERROTA
+   ============================================================ */
+.lose-screen { display: none; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 3rem 2rem; position: relative; z-index: 2; text-align: center; }
+.lose-screen.active { display: flex; }
+.lose-emoji { font-size: 3.5rem; margin-bottom: 1.5rem; opacity: 0; animation: fadeIn 0.6s 0.3s forwards; }
+.lose-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: #f5c2cc; margin-bottom: 1rem; opacity: 0; animation: fadeIn 0.6s 0.6s forwards; line-height: 1.3; }
+.lose-sub { font-size: 0.95rem; color: #7a2a3a; letter-spacing: 1px; line-height: 1.6; font-weight: 300; opacity: 0; animation: fadeIn 0.6s 0.9s forwards; margin-bottom: 2.5rem; }
+.lose-retry { background: linear-gradient(135deg, #8a1530, #c0445a); color: #fff; border: none; border-radius: 14px; padding: 15px 32px; font-family: 'Lato', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; opacity: 0; animation: fadeIn 0.6s 1.2s forwards; box-shadow: 0 4px 16px rgba(192,68,90,0.3); transition: transform 0.15s; }
+.lose-retry:active { transform: scale(0.97); }
+
+/* ============================================================
+   TELA DO PRESENTE
+   ============================================================ */
+.gift-screen { display: none; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; width: 100%; position: relative; z-index: 2; text-align: center; padding: 2rem; }
+.gift-screen.active { display: flex; }
+
+.gift-label { font-size: 13px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; color: #7a2a3a; margin-bottom: 3rem; font-family: 'Lato', sans-serif; opacity: 0; animation: fadeIn 0.8s 0.3s forwards; }
+
+.gift-box {
+  cursor: pointer;
+  position: relative;
+  width: 180px;
+  opacity: 0;
+  animation: fadeIn 0.6s 0.6s forwards, floatGift 3s 1.2s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
+  filter: drop-shadow(0 12px 30px rgba(192,68,90,0.4));
+}
+.gift-box.shaking {
+  animation: shake 0.45s ease-in-out 4 !important;
+  cursor: default;
+}
+
+/* Estrutura da caixa */
+.gift-body-wrap { position: relative; width: 180px; }
+
+.gift-base {
+  width: 180px; height: 140px;
+  background: linear-gradient(160deg, #a01830 0%, #6a0f22 100%);
+  border-radius: 8px 8px 18px 18px;
+  position: relative; overflow: hidden;
+}
+.gift-base::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(90deg, transparent 0px, transparent 54px, rgba(255,255,255,0.06) 54px, rgba(255,255,255,0.06) 60px);
+}
+.gift-vribbon {
+  position: absolute; top: 0; bottom: 0;
+  left: 50%; transform: translateX(-50%);
+  width: 24px;
+  background: linear-gradient(180deg, #e05070, #c0445a);
+  z-index: 1;
+}
+.gift-vribbon::before,
+.gift-vribbon::after { content: '✦'; position: absolute; left: 50%; transform: translateX(-50%); font-size: 10px; color: rgba(255,255,255,0.4); }
+.gift-vribbon::before { top: 20px; }
+.gift-vribbon::after  { bottom: 20px; }
+
+.gift-shine {
+  position: absolute; top: 10px; left: 14px;
+  width: 30px; height: 60px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.12), transparent);
+  border-radius: 50%;
+  transform: rotate(-20deg);
+}
+
+.gift-lid-wrap {
+  width: 190px; height: 38px;
+  background: linear-gradient(160deg, #c0445a 0%, #8a1530 100%);
+  border-radius: 8px;
+  margin-left: -5px;
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.gift-hribbon {
+  position: absolute; top: 0; bottom: 0;
+  left: 50%; transform: translateX(-50%);
+  width: 24px;
+  background: linear-gradient(180deg, #e8889a, #e05070);
+}
+
+.gift-bow-wrap {
+  position: absolute; top: -36px; left: 50%; transform: translateX(-50%);
+  width: 90px; height: 50px;
+  display: flex; align-items: flex-end; justify-content: center;
+  z-index: 3;
+}
+.bow-l, .bow-r {
+  width: 38px; height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f07090, #c0445a);
+  border: 2px solid #e05070;
+  box-shadow: inset 0 2px 6px rgba(255,255,255,0.2);
+}
+.bow-l { transform: rotate(-30deg) translateX(6px); }
+.bow-r { transform: rotate(30deg)  translateX(-6px); }
+.bow-knot {
+  position: absolute;
+  bottom: 2px; left: 50%; transform: translateX(-50%);
+  width: 18px; height: 18px;
+  background: radial-gradient(circle at 40% 35%, #f5c2cc, #e05070);
+  border-radius: 50%;
+  border: 1.5px solid #c0445a;
+  z-index: 4;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* ============================================================
+   TELA DAS RASPADINHAS
+   ============================================================ */
+.scratch-screen { display: none; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; width: 100%; position: relative; z-index: 2; padding: 3rem 1.5rem 2rem; }
+.scratch-screen.active { display: flex; }
+
+.scratch-label { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: #f0d8de; text-align: center; margin-bottom: 2.5rem; line-height: 1.6; opacity: 0; animation: fadeIn 0.6s 0.2s forwards; }
+
+.scratch-stack { display: flex; flex-direction: column; align-items: center; gap: 28px; opacity: 0; animation: fadeIn 0.6s 0.5s forwards; }
+
+.scratch-circle {
+  position: relative;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #4a1828;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+}
+
+.scratch-reveal {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  background: #2a0d14;
+  display: flex; align-items: center; justify-content: center;
+  z-index: 0;
+}
+
+.scratch-gift-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 700;
+  color: #f5c2cc;
+  text-align: center;
+  padding: 0 1.5rem; line-height: 1.4;
+}
+
+.scratch-canvas {
+  position: absolute; inset: 0;
+  z-index: 1;
+  cursor: crosshair;
+  touch-action: none;
+  border-radius: 50%;
+}

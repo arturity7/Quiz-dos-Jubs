@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz dos Jubs 💕</title>
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="quiz-wrap" id="app">
+
+  <!-- Pétalas de fundo -->
+  <div class="bg-petals" id="petals"></div>
+
+  <!-- ========================================================
+       TELA 1 — QUIZ
+       ======================================================== -->
+  <div class="quiz-main" id="quizMain">
+
+    <div class="header">
+      <div class="header-deco">♥ ♥ ♥</div>
+      <h1 class="quiz-title">Quiz dos <span>Jubs</span></h1>
+      <div class="header-line"></div>
+    </div>
+
+    <div class="progress-area">
+      <div class="progress-label">
+        <span>Pergunta <span id="qNum">1</span> de 12</span>
+        <span id="qPct">8%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width:8%"></div>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="q-number" id="qLabel">Pergunta 01</div>
+      <div class="q-text"   id="qText"></div>
+      <!-- Foto opcional: injetada via JS quando a pergunta tiver "image" -->
+    </div>
+
+    <div class="answers-area" id="answersArea"></div>
+
+    <div class="nav-area">
+      <button class="nav-btn back" id="btnBack" onclick="goBack()">← Voltar</button>
+      <button class="nav-btn next" id="btnNext" onclick="goNext()" disabled>Próxima →</button>
+    </div>
+
+  </div><!-- /quiz-main -->
+
+  <!-- ========================================================
+       TELA 2 — NAMORA COMIGO (resultado)
+       ======================================================== -->
+  <div class="final-screen" id="finalScreen">
+    <div class="final-label">respostas certas</div>
+    <div id="namoraCircles" class="circles-row"></div>
+    <div class="final-word" id="namoraWord"></div>
+    <div id="comigoCircles" class="circles-row"></div>
+    <div class="final-word" id="comigoWord"></div>
+    <!-- Clicável: vai para o presente (vitória) ou derrota -->
+    <div class="final-question" id="finalQuestion">?</div>
+  </div>
+
+  <!-- ========================================================
+       TELA 3A — PRESENTE (só aparece se acertar tudo)
+       ======================================================== -->
+  <div class="gift-screen" id="giftScreen">
+    <div class="gift-label">toca no presente...</div>
+    <div class="gift-box" id="giftBox" onclick="openGift()">
+      <div class="gift-body-wrap">
+        <div class="gift-bow-wrap">
+          <div class="bow-l"></div>
+          <div class="bow-r"></div>
+          <div class="bow-knot"></div>
+        </div>
+        <div class="gift-lid-wrap">
+          <div class="gift-hribbon"></div>
+        </div>
+        <div class="gift-base">
+          <div class="gift-vribbon"></div>
+          <div class="gift-shine"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       TELA 3B — DERROTA (aparece se errar alguma)
+       ======================================================== -->
+  <div class="lose-screen" id="loseScreen">
+    <div class="lose-emoji">💔</div>
+    <div class="lose-title">Quase lá...</div>
+    <div class="lose-sub">
+      Você errou algumas perguntas.<br>
+      Tente de novo e conquiste<br>
+      seus presentes! 🎁
+    </div>
+    <button class="lose-retry" onclick="restartQuiz()">Tentar de novo →</button>
+  </div>
+
+  <!-- ========================================================
+       TELA 4 — RASPADINHAS
+       ======================================================== -->
+  <div class="scratch-screen" id="scratchScreen">
+    <div class="scratch-label">raspe e descubra<br>seus presentes 🎁</div>
+    <div class="scratch-stack">
+
+      <div class="scratch-circle" id="card0">
+        <div class="scratch-reveal" id="reveal0">
+          <!-- Nome do presente injetado via JS (giftNames[0]) -->
+          <div class="scratch-gift-name" id="giftName0">Presente 1</div>
+        </div>
+        <canvas class="scratch-canvas" id="canvas0"></canvas>
+      </div>
+
+      <div class="scratch-circle" id="card1">
+        <div class="scratch-reveal" id="reveal1">
+          <div class="scratch-gift-name" id="giftName1">Presente 2</div>
+        </div>
+        <canvas class="scratch-canvas" id="canvas1"></canvas>
+      </div>
+
+      <div class="scratch-circle" id="card2">
+        <div class="scratch-reveal" id="reveal2">
+          <div class="scratch-gift-name" id="giftName2">Presente 3</div>
+        </div>
+        <canvas class="scratch-canvas" id="canvas2"></canvas>
+      </div>
+
+    </div>
+  </div><!-- /scratch-screen -->
+
+</div><!-- /quiz-wrap -->
+
+<!-- Script -->
+<script src="script.js"></script>
+
+</body>
+</html>
