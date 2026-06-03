@@ -72,12 +72,12 @@ const questions = [
 
   // ── Pergunta 5 — SEM FOTO ──────────────────────────────────
   {
-    text: "Pergunta 5 — <strong>substitua aqui</strong>",
+    text: "Qual filme a gente viu <strong>comendo sushi no hotel</strong>?",
     options: [
-      { letter: "R", text: "Resposta certa" },
-      { letter: "X", text: "Resposta errada" },
-      { letter: "Y", text: "Resposta errada" },
-      { letter: "Z", text: "Resposta errada" }
+      { letter: "R", text: "Shrek" },
+      { letter: "X", text: "Como treinar seu dragão" },
+      { letter: "Y", text: "Procurando Nemo" },
+      { letter: "Z", text: "Batman" }
     ],
     correct: "R"
   },
@@ -98,12 +98,12 @@ const questions = [
 
   // ── Pergunta 7 — SEM FOTO ──────────────────────────────────
   {
-    text: "Pergunta 7 — <strong>substitua aqui</strong>",
+    text: "Qual o nome do <strong>amor da minha vida</strong>?",
     options: [
-      { letter: "C", text: "Resposta certa" },
-      { letter: "X", text: "Resposta errada" },
-      { letter: "Y", text: "Resposta errada" },
-      { letter: "Z", text: "Resposta errada" }
+      { letter: "C", text: "Annalice Rondina Bergamasco" },
+      { letter: "C", text: "Annalice Rondina Bergamasco" },
+      { letter: "C", text: "Annalice Rondina Bergamasco" },
+      { letter: "C", text: "Annalice Rondina Bergamasco" }
     ],
     correct: "C"
   },
@@ -124,12 +124,12 @@ const questions = [
 
   // ── Pergunta 9 — SEM FOTO ──────────────────────────────────
   {
-    text: "Pergunta 9 — <strong>substitua aqui</strong>",
+    text: "Qual seria o <strong>programa perfeito</strong> para um domingo à tarde juntos?",
     options: [
-      { letter: "M", text: "Resposta certa" },
-      { letter: "X", text: "Resposta errada" },
-      { letter: "Y", text: "Resposta errada" },
-      { letter: "Z", text: "Resposta errada" }
+      { letter: "M", text: "Tomar um açaí com um filminho deitados no sofá" },
+      { letter: "X", text: "Cinema e sorvete depois" },
+      { letter: "Y", text: "Passeio no parque sem destino certo" },
+      { letter: "Z", text: "Churrasco no clube" }
     ],
     correct: "M"
   },
@@ -150,12 +150,12 @@ const questions = [
 
   // ── Pergunta 11 — SEM FOTO ─────────────────────────────────
   {
-    text: "Pergunta 11 — <strong>substitua aqui</strong>",
+    text: "Quais serão os nomes dos nossos filhos?",
     options: [
-      { letter: "G", text: "Resposta certa" },
-      { letter: "X", text: "Resposta errada" },
-      { letter: "Y", text: "Resposta errada" },
-      { letter: "Z", text: "Resposta errada" }
+      { letter: "G", text: "Pietro e Marina" },
+      { letter: "X", text: "Bia e Pietro" },
+      { letter: "Y", text: "Marina e Lucas" },
+      { letter: "Z", text: "Fernando e Carolina" }
     ],
     correct: "G"
   },
