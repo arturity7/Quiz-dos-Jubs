@@ -18,6 +18,7 @@ const giftNames = [
 // Para adicionar foto numa pergunta: image: "fotos/nome.jpg"
 // ============================================================
 const questions = [
+  // ── Pergunta 1 — SEM FOTO ──────────────────────────────────
   {
     text: "Qual a cor da calça que eu estava usando a <strong>primeira vez que nos vimos</strong>?",
     options: [
@@ -28,16 +29,22 @@ const questions = [
     ],
     correct: "N"
   },
+
+  // ── Pergunta 2 — COM FOTO ──────────────────────────────────
+  // Coloque o arquivo em: fotos/pergunta2.jpg  (ou .png, .webp)
   {
-    text: "Qual filme a gente viu <strong>comendo sushi no hotel</strong>?",
+    text: "Onde estávamos nesse momento?",
+    image: "fotos/restaurante em boituva.jpg",   // ← troque pelo nome real do arquivo
     options: [
-      { letter: "B", text: "Procurando Nemo" },
-      { letter: "P", text: "Como treinar seu dragão" },
-      { letter: "A", text: "Shrek" },
-      { letter: "X", text: "Batman" }
+      { letter: "X", text: "Hotel em Boituva" },
+      { letter: "A", text: "Restaurante em Boituva" },  // ← letra A da frase
+      { letter: "Y", text: "Indo para o show em boituva" },
+      { letter: "Z", text: "Zoológico" }
     ],
     correct: "A"
   },
+
+  // ── Pergunta 3 — SEM FOTO ──────────────────────────────────
   {
     text: "Quem disse <strong>\"Eu te amo\"</strong> primeiro?",
     options: [
@@ -48,16 +55,22 @@ const questions = [
     ],
     correct: "M"
   },
+
+  // ── Pergunta 4 — COM FOTO ──────────────────────────────────
+  // Coloque o arquivo em: fotos/pergunta4.jpg
   {
-    text: "Qual o nome do <strong>amor da minha vida</strong>?",
+    text: "O que a gente estava fazendo nessa foto?",
+    image: "fotos/parque em sp.jpg",   // ← troque pelo nome real do arquivo
     options: [
-      { letter: "O", text: "Annalice Rondina Bergamasco" },
-      { letter: "O", text: "Annalice Rondina Bergamasco" },
-      { letter: "O", text: "Annalice Rondina Bergamasco" },
-      { letter: "O", text: "Annalice Rondina Bergamasco" }
+      { letter: "O", text: "Fomos ao parque em sp" },  // ← letra O da frase
+      { letter: "X", text: "Fomos andar pelo bosque" },
+      { letter: "Y", text: "Fomos ao zoológico" },
+      { letter: "Z", text: "Fomos ao cinema" }
     ],
     correct: "O"
   },
+
+  // ── Pergunta 5 — SEM FOTO ──────────────────────────────────
   {
     text: "Pergunta 5 — <strong>substitua aqui</strong>",
     options: [
@@ -68,16 +81,22 @@ const questions = [
     ],
     correct: "R"
   },
+
+  // ── Pergunta 6 — COM FOTO ──────────────────────────────────
+  // Coloque o arquivo em: fotos/pergunta6.jpg
   {
-    text: "Pergunta 6 — <strong>substitua aqui</strong>",
+    text: "Onde estávamos nessa foto?",
+    image: "fotos/show do lulu.jpg",   // ← troque pelo nome real do arquivo
     options: [
-      { letter: "W", text: "Resposta errada" },
-      { letter: "A", text: "Resposta certa" },
-      { letter: "X", text: "Resposta errada" },
-      { letter: "Y", text: "Resposta errada" }
+      { letter: "W", text: "Show do Luan Santana" },
+      { letter: "A", text: "Show do Lulu" },  // ← letra A da frase
+      { letter: "X", text: "Show do Gustavo Lima" },
+      { letter: "Y", text: "Show do Michael Jackson" }
     ],
     correct: "A"
   },
+
+  // ── Pergunta 7 — SEM FOTO ──────────────────────────────────
   {
     text: "Pergunta 7 — <strong>substitua aqui</strong>",
     options: [
@@ -88,16 +107,22 @@ const questions = [
     ],
     correct: "C"
   },
+
+  // ── Pergunta 8 — COM FOTO ──────────────────────────────────
+  // Coloque o arquivo em: fotos/pergunta8.jpg
   {
-    text: "Pergunta 8 — <strong>substitua aqui</strong>",
+    text: "Em que cidade essa foto foi tirada?",
+    image: "fotos/sitio crispim.jpg",   // ← troque pelo nome real do arquivo
     options: [
-      { letter: "X", text: "Resposta errada" },
-      { letter: "O", text: "Resposta certa" },
-      { letter: "Y", text: "Resposta errada" },
-      { letter: "Z", text: "Resposta errada" }
+      { letter: "X", text: "Nova Lima" },
+      { letter: "O", text: "Rio Acima" },  // ← letra O da frase
+      { letter: "Y", text: "Belo Horizonte" },
+      { letter: "Z", text: "Lagoa Santa" }
     ],
     correct: "O"
   },
+
+  // ── Pergunta 9 — SEM FOTO ──────────────────────────────────
   {
     text: "Pergunta 9 — <strong>substitua aqui</strong>",
     options: [
@@ -108,16 +133,22 @@ const questions = [
     ],
     correct: "M"
   },
+
+  // ── Pergunta 10 — COM FOTO ─────────────────────────────────
+  // Coloque o arquivo em: fotos/pergunta10.jpg
   {
-    text: "Pergunta 10 — <strong>substitua aqui</strong>",
+    text: "Onde estávamos nessa foto?",
+    image: "fotos/vó rosa.jpg",  // ← troque pelo nome real do arquivo
     options: [
-      { letter: "X", text: "Resposta errada" },
-      { letter: "I", text: "Resposta certa" },
-      { letter: "Y", text: "Resposta errada" },
-      { letter: "Z", text: "Resposta errada" }
+      { letter: "X", text: "Sítio do ti Carlinhos" },
+      { letter: "I", text: "Casa vó Rosa" },  // ← letra I da frase
+      { letter: "Y", text: "Casa do seu pai" },
+      { letter: "Z", text: "Casa da sua mãe" }
     ],
     correct: "I"
   },
+
+  // ── Pergunta 11 — SEM FOTO ─────────────────────────────────
   {
     text: "Pergunta 11 — <strong>substitua aqui</strong>",
     options: [
@@ -128,13 +159,17 @@ const questions = [
     ],
     correct: "G"
   },
+
+  // ── Pergunta 12 — COM FOTO ─────────────────────────────────
+  // Coloque o arquivo em: fotos/pergunta12.jpg
   {
-    text: "Pergunta 12 — <strong>substitua aqui</strong>",
+    text: "Onde estávamos nessa foto?",
+    image: "fotos/sitio do tio Carlinhos.jpg",  // ← troque pelo nome real do arquivo
     options: [
-      { letter: "X", text: "Resposta errada" },
-      { letter: "Y", text: "Resposta errada" },
-      { letter: "O", text: "Resposta certa" },
-      { letter: "Z", text: "Resposta errada" }
+      { letter: "X", text: "Floresta" },
+      { letter: "Y", text: "Resort" },
+      { letter: "O", text: "Sítio do tio Carlinhos" },  // ← letra O da frase
+      { letter: "Z", text: "Sítio do Crispim" }
     ],
     correct: "O"
   }
