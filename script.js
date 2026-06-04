@@ -7,9 +7,9 @@
 // Edite os nomes aqui quando decidir!
 // ============================================================
 const giftNames = [
-  "Presente 1",
-  "Presente 2",
-  "Presente 3"
+  "Quadro",
+  "Bolsa preta",
+  "Biquini"
 ];
 
 // ============================================================
